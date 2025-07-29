@@ -17,6 +17,6 @@ app.AddMigrations();
 app.AddAuthorization();
 app.AddEndpoints();
 
-app.MapGet("/", () => "API RODANDO");
+app.MapGet("/", () => "RUNNING");
 
 app.Run();
