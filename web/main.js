@@ -1,3 +1,9 @@
+const API_BASE_URL = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "http://129.148.42.39:5000";
+
+console.log("API_BASE_URL:", API_BASE_URL);
+
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm)
@@ -12,7 +18,7 @@ if (loginForm)
         const passwordValue = passwordInput.value;
 
         try {
-            const response = await fetch("http://localhost:5000/v1/login", {
+            const response = await fetch(`${API_BASE_URL}/v1/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -61,7 +67,7 @@ if (registerForm)
         let passwordValue = password.value;
 
         try {
-            var response = await fetch("http://localhost:5000/v1/register", {
+            var response = await fetch(`${API_BASE_URL}/v1/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
