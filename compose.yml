@@ -2,9 +2,7 @@ version: "3.9"
 
 services:
   api:
-    build:
-      context: .
-      dockerfile: src/API/Dockerfile
+    image: myapp/api:latest
     ports:
       - "5000:5000"
     environment:
@@ -22,9 +20,7 @@ services:
       - app-network
 
   web:
-    build:
-      context: .
-      dockerfile: web/Dockerfile
+    image: myapp/web:latest
     ports:
       - "8080:80"
     depends_on:
