@@ -1,6 +1,10 @@
 using API.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Console.WriteLine("Cors:PolicyName = " + builder.Configuration["Cors:PolicyName"]);
+Console.WriteLine("Cors:Origins = " + builder.Configuration["Cors:Origins"]);
+
 builder.AddCorsConfiguration();
 builder.AddSqlServer();
 builder.AddAuthentication();
