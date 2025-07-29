@@ -12,6 +12,7 @@ services:
       - Jwt__Issuer=${Jwt__Issuer}
       - Jwt__Audience=${Jwt__Audience}
       - Cors__Origins=${Cors__Origins}
+      - Cors__PolicyName=${Cors__PolicyName}
       - ASPNETCORE_URLS=http://+:5000
       - DOTNET_RUNNING_IN_CONTAINER=true
     volumes:
