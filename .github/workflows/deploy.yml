@@ -24,21 +24,32 @@ jobs:
         docker save myapp/api:latest | gzip > ./image-api.tar.gz
         docker save myapp/web:latest | gzip > ./image-web.tar.gz
 
+    - name: Criar arquivo .env com variáveis do secrets
+      run: |
+        echo "ASPNETCORE_ENVIRONMENT=Production" > .env
+        echo "ConnectionStrings__DefaultConnection=${{ secrets.CONNECTIONSTRINGS__DEFAULTCONNECTION }}" >> .env
+        echo "Jwt__SecretKey=${{ secrets.JWT__SECRETKEY }}" >> .env
+        echo "Jwt__Issuer=${{ secrets.JWT__ISSUER }}" >> .env
+        echo "Jwt__Audience=${{ secrets.JWT__AUDIENCE }}" >> .env
+        echo "Cors__PolicyName=${{ secrets.CORS__POLICYNAME }}" >> .env
+        echo "Cors__Origins=${{ secrets.CORS__ORIGINS }}" >> .env
+        echo "ASPNETCORE_URLS=http://+:5000" >> .env
+        echo "DOTNET_RUNNING_IN_CONTAINER=true" >> .env
+
     - name: Listar arquivos na pasta atual (debug)
       run: |
-        ls -lh ./image-*.tar.gz compose.yml
-        ls -lh ./.env || echo ".env não encontrado"
+        ls -lh ./image-*.tar.gz compose.yml .env
 
-    - name: Enviar imagens e compose.yml para a VM
+    - name: Enviar imagens, compose.yml e .env para a VM
       uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.VM_IP }}
         username: ${{ secrets.VM_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        source: "image-api.tar.gz,image-web.tar.gz,compose.yml"
+        source: "image-api.tar.gz,image-web.tar.gz,compose.yml,.env"
         target: "/home/${{ secrets.VM_USER }}/app"
 
-    - name: Rodar docker-compose na VM com imagens carregadas
+    - name: Rodar docker-compose na VM com imagens carregadas e carregar .env
       uses: appleboy/ssh-action@v0.1.7
       with:
         host: ${{ secrets.VM_IP }}
@@ -53,4 +64,4 @@ jobs:
           docker image rm myapp/web:latest || true
           gunzip -c image-api.tar.gz | docker load
           gunzip -c image-web.tar.gz | docker load
-          docker-compose -f compose.yml up -d
+          docker-compose --env-file .env -f compose.yml up -d
