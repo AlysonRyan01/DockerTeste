@@ -8,24 +8,26 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\alyso\\.nuget\\packages\\": {}
+    "/Users/alysonryanullirsch/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos\\DockerTeste\\src\\Domain\\Domain.csproj",
+      "projectUniqueName": "/Users/alysonryanullirsch/Documents/ProjetosCsharp/DockerTeste/src/Domain/Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Projetos\\DockerTeste\\src\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\alyso\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos\\DockerTeste\\src\\Domain\\obj\\",
+      "projectPath": "/Users/alysonryanullirsch/Documents/ProjetosCsharp/DockerTeste/src/Domain/Domain.csproj",
+      "packagesPath": "/Users/alysonryanullirsch/.nuget/packages/",
+      "outputPath": "/Users/alysonryanullirsch/Documents/ProjetosCsharp/DockerTeste/src/Domain/obj/",
       "projectStyle": "PackageReference",
+      "UsingMicrosoftNETSdk": false,
       "configFilePaths": [
-        "C:\\Users\\alyso\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/alysonryanullirsch/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -43,8 +45,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net9.0": {
@@ -65,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
