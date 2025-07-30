@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://129.148.42.39/5000"
+const API_BASE_URL = "http://129.148.42.39:5000"
 
 
 console.log("API_BASE_URL:", API_BASE_URL);
