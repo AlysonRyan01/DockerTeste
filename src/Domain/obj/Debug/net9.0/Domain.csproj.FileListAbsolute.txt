@@ -33,3 +33,15 @@ C:/Projetos/AuthService/src/Domain/obj/Debug/net9.0/ref/Domain.dll
 /Users/alysonryanullirsch/Documents/ProjetosCsharp/DockerTeste/src/Domain/obj/Debug/net9.0/refint/Domain.dll
 /Users/alysonryanullirsch/Documents/ProjetosCsharp/DockerTeste/src/Domain/obj/Debug/net9.0/Domain.pdb
 /Users/alysonryanullirsch/Documents/ProjetosCsharp/DockerTeste/src/Domain/obj/Debug/net9.0/ref/Domain.dll
+C:\Projetos\DockerTeste\src\Domain\bin\Debug\net9.0\Domain.deps.json
+C:\Projetos\DockerTeste\src\Domain\bin\Debug\net9.0\Domain.dll
+C:\Projetos\DockerTeste\src\Domain\bin\Debug\net9.0\Domain.pdb
+C:\Projetos\DockerTeste\src\Domain\obj\Debug\net9.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\DockerTeste\src\Domain\obj\Debug\net9.0\Domain.AssemblyInfoInputs.cache
+C:\Projetos\DockerTeste\src\Domain\obj\Debug\net9.0\Domain.AssemblyInfo.cs
+C:\Projetos\DockerTeste\src\Domain\obj\Debug\net9.0\Domain.csproj.CoreCompileInputs.cache
+C:\Projetos\DockerTeste\src\Domain\obj\Debug\net9.0\Domain.sourcelink.json
+C:\Projetos\DockerTeste\src\Domain\obj\Debug\net9.0\Domain.dll
+C:\Projetos\DockerTeste\src\Domain\obj\Debug\net9.0\refint\Domain.dll
+C:\Projetos\DockerTeste\src\Domain\obj\Debug\net9.0\Domain.pdb
+C:\Projetos\DockerTeste\src\Domain\obj\Debug\net9.0\ref\Domain.dll

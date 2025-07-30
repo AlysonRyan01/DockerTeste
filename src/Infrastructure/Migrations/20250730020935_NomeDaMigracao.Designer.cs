@@ -5,26 +5,31 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250729185348_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250730020935_NomeDaMigracao")]
+    partial class NomeDaMigracao
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.7");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "9.0.7")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -36,12 +41,12 @@ namespace Infrastructure.Migrations
                     b.OwnsOne("Domain.ValueObjects.Email", "Email", b1 =>
                         {
                             b1.Property<Guid>("UserId")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("uuid");
 
                             b1.Property<string>("Address")
                                 .IsRequired()
                                 .HasMaxLength(256)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("character varying(256)")
                                 .HasColumnName("Email");
 
                             b1.HasKey("UserId");
@@ -55,12 +60,12 @@ namespace Infrastructure.Migrations
                     b.OwnsOne("Domain.ValueObjects.FirstName", "FirstName", b1 =>
                         {
                             b1.Property<Guid>("UserId")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("uuid");
 
                             b1.Property<string>("Name")
                                 .IsRequired()
                                 .HasMaxLength(100)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("character varying(100)")
                                 .HasColumnName("FirstName");
 
                             b1.HasKey("UserId");
@@ -74,12 +79,12 @@ namespace Infrastructure.Migrations
                     b.OwnsOne("Domain.ValueObjects.LastName", "LastName", b1 =>
                         {
                             b1.Property<Guid>("UserId")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("uuid");
 
                             b1.Property<string>("Name")
                                 .IsRequired()
                                 .HasMaxLength(100)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("character varying(100)")
                                 .HasColumnName("LastName");
 
                             b1.HasKey("UserId");
@@ -93,11 +98,11 @@ namespace Infrastructure.Migrations
                     b.OwnsOne("Domain.ValueObjects.PasswordHash", "PasswordHash", b1 =>
                         {
                             b1.Property<Guid>("UserId")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("uuid");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
-                                .HasColumnType("TEXT")
+                                .HasColumnType("text")
                                 .HasColumnName("PasswordHash");
 
                             b1.HasKey("UserId");
@@ -112,18 +117,20 @@ namespace Infrastructure.Migrations
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
 
                             b1.Property<string>("Name")
                                 .IsRequired()
                                 .HasMaxLength(100)
-                                .HasColumnType("TEXT");
+                                .HasColumnType("character varying(100)");
 
                             b1.Property<Guid>("UserId")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("uuid");
 
                             b1.Property<DateTime?>("ValidUntil")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("timestamp with time zone");
 
                             b1.HasKey("Id");
 
