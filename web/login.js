@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://129.148.42.39:5000"
+const API_BASE_URL = "/v1"
 
 const loginForm = document.getElementById("loginForm");
 
@@ -14,7 +14,7 @@ if (loginForm)
         const passwordValue = passwordInput.value;
 
         try {
-            const response = await fetch(`${API_BASE_URL}/v1/login`, {
+            const response = await fetch(`${API_BASE_URL}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -56,7 +56,7 @@ const tokenJwt = localStorage.getItem('jwt');
 
 async function validarToken() {
     try {
-    const response = await fetch(`${API_BASE_URL}/v1/auth/validate`, {
+    const response = await fetch(`${API_BASE_URL}/auth/validate`, {
         method: "GET",
         headers: {
         "Content-Type": "application/json",
