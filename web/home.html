@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+</head>
+<body>
+    <div class="flex w-screen h-screen bg-[#212733] items-center justify-center">
+        <video
+        id="meuVideo"
+        class="video-js vjs-default-skin"
+        controls
+        width="640"
+        height="360"
+        data-setup='{}'>
+            <source src="https://alysonullirsch.com/videos/playlist.m3u8" type="application/x-mpegURL">
+        </video>
+    </div>
+    <script src="home.js"></script>
+</body>
+</html>

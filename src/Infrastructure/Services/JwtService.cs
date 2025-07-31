@@ -61,4 +61,36 @@ public class JwtService : IJwtService
         
         return Task.FromResult(ci);
     }
+
+    public async Task<bool> ValidateToken(string token)
+    {
+        if (string.IsNullOrWhiteSpace(token))
+            return false;
+        
+        var secret = _configuration["Jwt:SecretKey"]!;
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var key = Encoding.UTF8.GetBytes(secret);
+
+        try
+        {
+            await Task.Run(() =>
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+            });
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
 }

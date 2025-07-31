@@ -16,6 +16,7 @@ public static class AppExtensions
     public static void AddEndpoints(this WebApplication app)
     {
         app.MapUserEndpoint();
+        app.MapAuthEndpoints();
     }
     
     public static void AddSwagger(this WebApplication app)
