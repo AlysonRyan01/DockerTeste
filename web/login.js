@@ -34,7 +34,7 @@ if (loginForm)
 
             if (baseResponse.success) {
                 localStorage.setItem('jwt', baseResponse.data)
-                alert("✅ " + baseResponse.message);
+                mostrarSnackbar();
                 window.location.replace("home.html");
             } else {
                 alert("❌ " + baseResponse.message);
@@ -75,4 +75,15 @@ async function validarToken() {
         console.error("Erro ao validar token:", error);
         localStorage.removeItem("jwt");
     }
+}
+
+function mostrarSnackbar() {
+    const snackbar = document.getElementById("snackbar");
+    snackbar.classList.remove("opacity-0", "pointer-events-none");
+    snackbar.classList.add("opacity-100");
+
+    setTimeout(() => {
+        snackbar.classList.remove("opacity-100");
+        snackbar.classList.add("opacity-0", "pointer-events-none");
+    }, 3000);
 }
