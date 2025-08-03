@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://129.148.42.39:5000"
+const API_BASE_URL = "/v1"
 
 const tokenJwt = localStorage.getItem('jwt');
 
@@ -12,7 +12,7 @@ const tokenJwt = localStorage.getItem('jwt');
 
 async function validarToken() {
     try {
-        var response = await fetch(`${API_BASE_URL}/v1/auth/validate`, {
+        var response = await fetch(`${API_BASE_URL}/auth/validate`, {
                 method: "GET",
                 headers: {
                 "Content-Type": "application/json",
