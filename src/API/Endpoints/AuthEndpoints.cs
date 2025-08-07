@@ -1,4 +1,5 @@
 using Application.Requests.Auth.Queries;
+using Domain.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +14,11 @@ public static class AuthEndpoints
             var token = authHeader?.Replace("Bearer ", "", StringComparison.OrdinalIgnoreCase);
             
             if (string.IsNullOrEmpty(token))
-                return Results.BadRequest();
+                return Results.BadRequest(new Response<string>(
+                    false, 
+                    "Erro: token vazio", 
+                    "Erro: token vazio", 
+                    null));
             
             var request = new ValidateTokenQuery(token);
             var result = await handler.Send(request);

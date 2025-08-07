@@ -13,7 +13,7 @@ public static class UserEndpoints
         {
             var result = await handler.Send(command);
             if (!result.Success)
-                return Results.Problem(result.Message);
+                return Results.BadRequest(result);
 
             return Results.Ok(result);
         });
@@ -24,7 +24,7 @@ public static class UserEndpoints
         {
             var result = await handler.Send(command);
             if (!result.Success)
-                return Results.Problem(result.Message);
+                return Results.BadRequest(result);
             
             return Results.Ok(result);
         });
