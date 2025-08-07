@@ -29,11 +29,11 @@ public class PaymentMap : IEntityTypeConfiguration<Payment>
             .IsRequired();
 
         builder.Property(p => p.CreatedAt)
-            .HasColumnType("datetime")
+            .HasColumnType("timestamp")
             .IsRequired();
 
         builder.Property(p => p.PaidAt)
-            .HasColumnType("datetime")
+            .HasColumnType("timestamp")
             .IsRequired(false);
     }
 }

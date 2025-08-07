@@ -31,14 +31,14 @@ namespace Infrastructure.Migrations
                         .HasColumnType("decimal(10,2)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("CustomerId")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<DateTime?>("PaidAt")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("Status")
                         .IsRequired()
