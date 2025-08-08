@@ -41,6 +41,15 @@ public static class BuilderExtensions
                 ValidateAudience = false
             };
             x.RequireHttpsMetadata = false;
+            
+            x.Events = new JwtBearerEvents
+            {
+                OnMessageReceived = context =>
+                {
+                    context.Token = context.Request.Cookies["access_token"];
+                    return Task.CompletedTask;
+                }
+            };
         });
 
         builder.Services.AddAuthorization();
