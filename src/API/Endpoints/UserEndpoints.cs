@@ -20,8 +20,9 @@ public static class UserEndpoints
             {
                 HttpOnly = true,
                 Secure = false,
-                SameSite = SameSiteMode.None,
-                Expires = DateTime.UtcNow.AddMinutes(30)
+                SameSite = SameSiteMode.Lax,
+                Expires = DateTime.UtcNow.AddMinutes(30),
+                Path = "/"
             });
             
             return Results.Ok(result);
