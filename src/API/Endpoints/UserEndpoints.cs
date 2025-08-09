@@ -23,7 +23,7 @@ public static class UserEndpoints
                 SameSite = SameSiteMode.None,
                 Expires = DateTime.UtcNow.AddMinutes(30)
             });
-
+            
             return Results.Ok(result);
         });
 
