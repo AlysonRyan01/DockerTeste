@@ -1,7 +1,4 @@
-using Application.Requests.Auth.Queries;
 using Domain.Shared;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
 namespace API.Endpoints;
 
@@ -9,24 +6,20 @@ public static class AuthEndpoints
 {
     public static void MapAuthEndpoints(this WebApplication app)
     {
-        app.MapGet("/v1/auth/validate", async (ISender handler,[FromHeader(Name = "Authorization")] string authHeader) =>
+        app.MapGet("/v1/auth/validate", (HttpContext context) =>
         {
-            var token = authHeader?.Replace("Bearer ", "", StringComparison.OrdinalIgnoreCase);
+            var claims = context.User.Claims
+                .Select(c => new ClaimDto { Type = c.Type, Value = c.Value })
+                .ToList();
             
-            if (string.IsNullOrEmpty(token))
-                return Results.BadRequest(new Response<string>(
-                    false, 
-                    "Erro: token vazio", 
-                    "Erro: token vazio", 
-                    null));
-            
-            var request = new ValidateTokenQuery(token);
-            var result = await handler.Send(request);
-            
-            if (!result.Success)
-                return Results.BadRequest(result);
-            
-            return Results.Ok(result);
-        });
+            return Results.Ok(
+                new Response<List<ClaimDto>>(true, "Autenticado com sucesso!", claims, null));
+        }).RequireAuthorization();
     }
+}
+
+public class ClaimDto
+{
+    public string Type { get; set; } = string.Empty;
+    public string Value { get; set; } = string.Empty;
 }

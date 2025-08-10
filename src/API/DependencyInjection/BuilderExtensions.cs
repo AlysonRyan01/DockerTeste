@@ -46,7 +46,10 @@ public static class BuilderExtensions
             {
                 OnMessageReceived = context =>
                 {
-                    context.Token = context.Request.Cookies["access_token"];
+                    if (context.Request.Cookies.TryGetValue("access_token", out var token))
+                    {
+                        context.Token = token;
+                    }
                     return Task.CompletedTask;
                 }
             };
