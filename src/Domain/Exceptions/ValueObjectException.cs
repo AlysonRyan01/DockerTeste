@@ -4,8 +4,8 @@ public sealed class ValueObjectException<T> : BaseValueObjectException
 {
     public string Prop { get; }
     
-    public ValueObjectException(string prop, string? message = null)
-        : base(message ?? $"Erro ao criar o Value Object do tipo {typeof(T).Name}.")
+    public ValueObjectException(string prop, string message)
+        : base(message)
     {
         Prop = prop;
     }
@@ -13,5 +13,8 @@ public sealed class ValueObjectException<T> : BaseValueObjectException
 
 public abstract class BaseValueObjectException : Exception
 {
-    protected BaseValueObjectException(string prop, string? message = null) { }
+    protected BaseValueObjectException(string message)
+        : base(message)
+    {
+    }
 }
